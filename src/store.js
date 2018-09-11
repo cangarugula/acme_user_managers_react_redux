@@ -2,12 +2,9 @@ import { createStore, applyMiddleware } from 'redux'
 import loggerMiddleware from 'redux-logger'
 
 const initialState = {
-  users: [],
-  managers: [],
-  newUser: '',
-  newManager: ''
-
+  users: []
 }
+
 
 
 
@@ -19,8 +16,6 @@ const reducer = (state = initialState, action) => {
   switch(action.type) {
     case 'getAllUsers':
       return {...state, users: [...action.users]}
-    case 'getAllManagers':
-      return {...state, managers: [...action.managers]}
     default: return state
   }
 }

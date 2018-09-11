@@ -1,10 +1,11 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
-const Nav = ({users,managers}) => {
+const Nav = ({users}) => {
   return (
     <ul>
-      <li>Users ({users.length})</li>
-      <li>Managers ({managers.length})</li>
+      <Link to='/users'><li>Users ({users.length})</li></Link>
+      <li>Managers ()</li>
       <li>Create User</li>
     </ul>
   )
