@@ -10,6 +10,7 @@ class App extends Component {
     super(props)
     this.state = store.getState()
     this.getManager = this.getManager.bind(this)
+    this.getManagers = this.getManagers.bind(this)
   }
 
   componentDidMount() {
@@ -32,13 +33,19 @@ class App extends Component {
     }
   }
 
+  getManagers(){
+    const usersWithManagers = this.state.users.filter(_user => _user.managerId)
+    return usersWithManagers.map(_user => this.getManager(_user))
+
+  }
+
   render(){
     const {users} = this.state
     const {getManager} = this
     return(
       <Router>
         <div>
-          <Nav users={users} />
+          <Nav users={users} managers={this.getManagers(users)} />
           <Route path='/users' render={()=> <Users users={users} getManager={getManager}/>}></Route>
         </div>
       </Router>
